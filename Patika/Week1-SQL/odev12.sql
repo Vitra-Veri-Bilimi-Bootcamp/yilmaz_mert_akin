@@ -1,20 +1,22 @@
 
+--film tablosunda film uzunluğu length sütununda gösterilmektedir. Uzunluğu ortalama film uzunluğundan fazla kaç tane film vardır?
 
---First
 SELECT COUNT(*) FROM film
 WHERE length >
 (
 	SELECT AVG(length) FROM film
 );
 
---Second
+--film tablosunda en yüksek rental_rate değerine sahip kaç tane film vardır?
+
 SELECT COUNT(*) FROM film
 WHERE rental_rate =
 (
 	SELECT MAX(rental_rate) FROM film
 );
 
---Third
+--film tablosunda en düşük rental_rate ve en düşün replacement_cost değerlerine sahip filmleri sıralayınız.
+
 
 /*This one, I wasn't sure what the question asks. Does it ask me to return the data that has lowest rate and cost at the 
 same time or lowest rate films and lowest cost films. So I did it both. */
@@ -42,7 +44,8 @@ WHERE replacement_cost=(
 ))
 
 
---Fourth
+--payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
+
 --Since we can use subquery as variable(column), I tried using it as creating new table[It gives count of customers how many times bought something]. I named it new table
 SELECT first_name, last_name, count
 FROM (SELECT customer_id, COUNT(customer_id)
